@@ -43,7 +43,7 @@ If you prefer to run the Python script directly:
 Clone the repository:
 
 Bash
-git clone https://github.com/yourusername/your-repo-name.git
+git clone https://github.com/yourusername/your-repo-name.git](https://github.com/f4209138-ctrl/Password-Vault-project.git
 Install the required dependencies:
 
 Bash
