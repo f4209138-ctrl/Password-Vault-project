@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Password Generator & Vault</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --accent-color: #10b981;
+            --accent-hover: #059669;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #020617 0%, var(--bg-color) 100%);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--surface-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--surface-color);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #334155;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        /* Interactive Demo Section */
+        .interactive-demo {
+            background-color: var(--surface-color);
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 60px;
+            border: 1px solid #334155;
+            text-align: center;
+        }
+
+        .interactive-demo h2 {
+            margin-bottom: 20px;
+        }
+
+        .demo-box {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .password-display {
+            font-family: monospace;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 250px;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--surface-color);
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Secure Password Vault 🔐</h1>
+        <p class="subtitle">A lightweight, locally-hosted desktop application that generates highly secure passwords and safely stores them using 3-tier AES encryption.</p>
+        <div class="cta-buttons">
+            <a href="https://github.com/YOUR_USERNAME/YOUR_REPO/releases" class="btn btn-primary" target="_blank">Download .exe</a>
+            <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" class="btn btn-secondary" target="_blank">View GitHub Repo</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="interactive-demo">
+            <h2>Try the Generator</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Experience the same 16-character secure generation algorithm used in the app.</p>
+            
+            <div class="demo-box">
+                <input type="text" id="passDisplay" class="password-display" readonly value="Click Generate...">
+            </div>
+            
+            <div class="cta-buttons">
+                <button class="btn btn-primary" onclick="generatePassword()">Generate New Password</button>
+                <button class="btn btn-secondary" onclick="copyPassword()" id="copyBtn">Copy</button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>🛡️ Triple-Factor Login</h3>
+                <p>Requires exactly three master passwords to derive the decryption key, rendering brute-force attacks nearly impossible.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 Local AES Encryption</h3>
+                <p>Uses the cryptography.fernet library to encrypt your data locally. Your credentials never touch the cloud or leave your PC.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Standalone .exe</h3>
+                <p>No Python setup required. Just download the executable and run it instantly on your Windows machine.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2026 Secure Password Vault. Open Source on GitHub.</p>
+    </footer>
+
+    <script>
+        // Interactive JavaScript to simulate the Python password generator
+        function generatePassword() {
+            const length = 16;
+            const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+            let result = "";
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                result += characters[randomIndex];
+            }
+            document.getElementById("passDisplay").value = result;
+            document.getElementById("copyBtn").innerText = "Copy";
+        }
+
+        function copyPassword() {
+            const passDisplay = document.getElementById("passDisplay");
+            if (passDisplay.value && passDisplay.value !== "Click Generate...") {
+                passDisplay.select();
+                passDisplay.setSelectionRange(0, 99999); // For mobile devices
+                navigator.clipboard.writeText(passDisplay.value).then(() => {
+                    document.getElementById("copyBtn").innerText = "Copied!";
+                });
+            }
+        }
+    </script>
+</body>
+</html>
