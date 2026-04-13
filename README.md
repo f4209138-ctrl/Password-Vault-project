@@ -1,9 +1,9 @@
-Secure Password Generator & Vault 
+Secure Password Generator & Vault 🔐
 A lightweight, locally-hosted desktop application that generates highly secure passwords and safely stores them using symmetric encryption. Built with Python and Tkinter, this tool ensures your credentials never leave your machine and are guarded by a unique 3-tier master password system.
 
 Available as a standalone executable (.exe) for Windows, requiring no installation or Python environment setup!
 
-Features
+✨ Features
 Triple-Factor Master Login: Requires exactly three master passwords to derive the decryption key, adding complexity against brute-force attacks.
 
 Strong Password Generation: Automatically generates secure 16-character passwords containing uppercase letters, lowercase letters, numbers, and special symbols.
@@ -14,7 +14,7 @@ Read & Manage: Easily view your decrypted vault within the app.
 
 Delete Entries: Target and remove specific website credentials from your vault, automatically re-encrypting the remaining data.
 
-How the Security Works
+🛡️ How the Security Works
 This application does not store your master passwords anywhere. Instead, it uses a Key Derivation mechanism:
 
 The three master passwords you enter are combined.
@@ -25,9 +25,9 @@ That hash is encoded into a URL-safe base64 string to create a valid Fernet Key.
 
 This key is used to decrypt the vault file upon login and re-encrypt it when saving new entries.
 
-CRITICAL WARNING: Because the master passwords are never saved, there is no "Forgot Password" feature. If you forget any of your three master passwords, you will permanently lose access to your vault.
+⚠️ CRITICAL WARNING: Because the master passwords are never saved, there is no "Forgot Password" feature. If you forget any of your three master passwords, you will permanently lose access to your vault.
 
-Usage Instructions
+🚀 Usage Instructions
 Running the Executable (.exe)
 If you just want to use the app without touching the code:
 
@@ -54,12 +54,12 @@ Run the script:
 
 Bash
 python vault_app.py
-File Structure
+📂 File Structure
 vault_app.py: The main Python source code.
 
 my_vault.enc: The encrypted vault file (automatically generated upon your first save). Do not delete this file unless you want to wipe your vault.
 
-Built With
+🛠️ Built With
 Python 3
 
 Tkinter (GUI Framework)
